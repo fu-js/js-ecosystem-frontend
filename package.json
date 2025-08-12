@@ -1,0 +1,38 @@
+{
+  "name": "nuxt-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "@nuxt/eslint": "1.8.0",
+    "@nuxt/image": "1.11.0",
+    "@nuxt/scripts": "0.11.10",
+    "@nuxt/ui": "3.3.0",
+    "@prisma/client": "^6.13.0",
+    "@tailwindcss/vite": "^4.1.11",
+    "@tanstack/vue-table": "^8.21.3",
+    "@unhead/vue": "^2.0.3",
+    "@vueuse/core": "^13.6.0",
+    "@vueuse/motion": "^3.0.3",
+    "animejs": "^4.1.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "eslint": "^9.0.0",
+    "nuxt": "^4.0.3",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.6.3",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/animejs": "^3.1.13",
+    "prisma": "^6.13.0"
+  }
+}

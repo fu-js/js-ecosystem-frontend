@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  id         String     @id @default(uuid())
+  name       String     @db.VarChar(255)
+  rollNumber String     @unique @map("roll_number") @db.VarChar(8)
+  department Department
+  address    String?    @db.VarChar(255)
+  phone      String     @db.VarChar(10)
+  dob        DateTime
+  gender     Gender
+  majorId    String?
+  email      String     @unique @db.VarChar(255)
+  socialLink String?    @map("social_link") @db.VarChar(255)
+  status     Status
+  createdAt  DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt  DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
+  cohort     String?    @db.VarChar(50)
+  major      Major?     @relation(fields: [majorId], references: [id])
+  users      User?
+
+  @@map("tbl_members")
+}
+
+model Major {
+  id        String   @id @default(uuid())
+  majorCode String?  @map("major_code") @db.VarChar(50)
+  majorName String?  @map("major_name") @db.VarChar(50)
+  members   Member[]
+
+  @@map("tbl_majors")
+}
+
+model User {
+  id        String     @id @default(uuid())
+  memberId  String     @unique
+  googleId  String     @unique @map("google_id")
+  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
+  users     UserRole[]
+  member    Member     @relation(fields: [memberId], references: [id])
+
+  @@map("tbl_users")
+}
+
+model Role {
+  id             String           @id @default(uuid())
+  name           String           @unique
+  description    String?          @db.VarChar(255)
+  createdAt      DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt      DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+  rolePermission RolePermission[]
+  role           UserRole[]
+
+  @@map("tbl_role")
+}
+
+model UserRole {
+  userId    String   @map("user_id")
+  roleId    String   @map("role_id")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+  role      Role     @relation(fields: [roleId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@id([userId, roleId])
+  @@map("tbl_user_has_role")
+}
+
+model Permission {
+  id          String           @id @default(uuid())
+  path        String           @unique @db.VarChar(255)
+  category    String           @db.VarChar(255)
+  description String?          @db.VarChar(255)
+  createdAt   DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+  permission  RolePermission[]
+
+  @@map("tbl_permission")
+}
+
+model RolePermission {
+  permissionId String     @map("permission_id")
+  roleId       String     @map("role_id")
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
+  permission   Permission @relation(fields: [permissionId], references: [id])
+  role         Role       @relation(fields: [roleId], references: [id])
+
+  @@id([roleId, permissionId])
+  @@map("tbl_role_has_permission")
+}
+
+enum Gender {
+  Male
+  Female
+  Other
+}
+
+enum Status {
+  Active
+  Inactive
+  Ban
+}
+
+enum Department {
+  BanChuyenMon
+  BanNoiDung
+  BanVanHoa
+  BanDoiNgoai
+  BanTruyenThong
+}

@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@layer base {
+  * {
+    @apply border-muted rounded-md;
+  }
+}
+
+@layer utilities {
+  .dbg {
+    @apply outline outline-debug rounded-none;
+  }
+}
+
+@theme static {
+  --color-transparent-50: #0000;
+  --color-transparent-100: #0000;
+  --color-transparent-200: #0000;
+  --color-transparent-300: #0000;
+  --color-transparent-400: #0000;
+  --color-transparent-500: #0000;
+  --color-transparent-600: #0000;
+  --color-transparent-700: #0000;
+  --color-transparent-800: #0000;
+  --color-transparent-900: #0000;
+
+  --color-mauve-50: oklch(88.715% 0.03877 304.749);
+  --color-mauve-100: oklch(86.715% 0.05877 304.749);
+  --color-mauve-200: oklch(82.715% 0.07877 304.749);
+  --color-mauve-300: oklch(80.715% 0.09877 304.749);
+  --color-mauve-400: oklch(78.715% 0.11877 304.749);
+  --color-mauve-500: oklch(72.715% 0.15877 304.749);
+  --color-mauve-600: oklch(68.467% 0.25046 297.016);
+  --color-mauve-700: oklch(65.467% 0.25046 297.016);
+  --color-mauve-800: oklch(52.467% 0.25046 297.016);
+  --color-mauve-900: oklch(35.467% 0.25046 297.016);
+  --color-mauve-950: oklch(25.467% 0.25046 297.016);
+
+  --color-debug-50: oklch(92.367% 0.05014 52.601);
+  --color-debug-100: oklch(88.367% 0.0714 52.601);
+  --color-debug-200: oklch(82.367% 0.1014 52.601);
+  --color-debug-300: oklch(80.367% 0.1214 52.601);
+  --color-debug-400: oklch(78.523% 0.13515 47.515);
+  --color-debug-500: oklch(76.523% 0.15515 47.515);
+  --color-debug-600: oklch(74.523% 0.17515 47.515);
+  --color-debug-700: oklch(72.196% 0.18402 42.417);
+  --color-debug-800: oklch(70.196% 0.20402 42.417);
+  --color-debug-900: oklch(68.196% 0.2402 42.417);
+}
+
+:root {
+  --ui-text-dimmed: var(--ui-color-neutral-400);
+  --ui-text-muted: var(--ui-color-neutral-500);
+  --ui-text-toned: var(--ui-color-neutral-600);
+  --ui-text: var(--ui-color-neutral-700);
+  --ui-text-highlighted: var(--ui-color-neutral-900);
+  --ui-text-inverted: var(--color-white);
+
+  --ui-bg: var(--color-white);
+  --ui-bg-muted: var(--ui-color-neutral-50);
+  --ui-bg-elevated: var(--ui-color-neutral-100);
+  --ui-bg-accented: var(--ui-color-neutral-200);
+  --ui-bg-inverted: var(--ui-color-neutral-900);
+
+  --ui-border: var(--ui-color-neutral-200);
+  --ui-border-debug: var(--color-debug-700);
+  --ui-border-muted: var(--ui-color-neutral-200);
+  --ui-border-accented: var(--ui-color-neutral-300);
+  --ui-border-inverted: var(--ui-color-neutral-900);
+
+  /* --ui-debug: var(--color-debug-700); */
+  --ui-primary: var(--color-mauve-800);
+  --ui-secondary: var(--ui-color-secondary-500);
+  --ui-success: var(--ui-color-success-500);
+  --ui-info: var(--ui-color-info-500);
+  --ui-warning: var(--ui-color-warning-500);
+  --ui-error: var(--ui-color-error-500);
+  --ui-bcm: var(--color-mauve-800);
+  --ui-bdn: var(--color-mauve-800);
+  --ui-bnd: var(--color-mauve-800);
+  --ui-btt: var(--color-mauve-800);
+  --ui-bvh: var(--color-mauve-800);
+}
+
+.dark {
+  --ui-text-dimmed: var(--ui-color-neutral-500);
+  --ui-text-muted: var(--ui-color-neutral-400);
+  --ui-text-toned: var(--ui-color-neutral-300);
+  --ui-text: var(--ui-color-neutral-200);
+  --ui-text-highlighted: var(--color-white);
+  --ui-text-inverted: var(--ui-color-neutral-900);
+
+  --ui-bg: var(--ui-color-neutral-900);
+  --ui-bg-muted: var(--ui-color-neutral-800);
+  --ui-bg-elevated: var(--ui-color-neutral-800);
+  --ui-bg-accented: var(--ui-color-neutral-700);
+  --ui-bg-inverted: var(--color-white);
+
+  --ui-border: var(--ui-color-neutral-800);
+  --ui-border-debug: var(--color-debug-100);
+  --ui-border-muted: var(--ui-color-neutral-700);
+  --ui-border-accented: var(--ui-color-neutral-700);
+  --ui-border-inverted: var(--color-white);
+
+  /* --ui-debug: var(--color-debug-100); */
+  --ui-primary: var(--color-mauve-400);
+  --ui-secondary: var(--ui-color-secondary-400);
+  --ui-success: var(--ui-color-success-400);
+  --ui-info: var(--ui-color-info-400);
+  --ui-warning: var(--ui-color-warning-400);
+  --ui-error: var(--ui-color-error-400);
+  --ui-bcm: var(--color-mauve-400);
+  --ui-bdn: var(--color-mauve-400);
+  --ui-bnd: var(--color-mauve-400);
+  --ui-btt: var(--color-mauve-400);
+  --ui-bvh: var(--color-mauve-400);
+}
