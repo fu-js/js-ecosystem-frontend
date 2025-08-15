@@ -5,6 +5,12 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
+  runtimeConfig: {
+    app: {
+      googleClientId: process.env.GOOGLE_CLIENT_ID,
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },

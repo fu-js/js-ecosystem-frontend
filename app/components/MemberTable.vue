@@ -108,7 +108,7 @@ const columns: TableColumn<PartialMember>[] = [
         { class: "text-center dbg" },
         h(
           UBadge,
-          { class: "border capitalize rounded-full", variant: "subtle", color },
+          { class: "capitalize rounded-full", variant: "subtle", color },
           () => row.getValue("status")
         )
       );

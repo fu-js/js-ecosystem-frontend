@@ -11,4 +11,10 @@ declare module "nuxt/schema" {
   }
 }
 
+declare global {
+  interface Window {
+    handleCredentialResponse: (response: any) => void;
+  }
+}
+
 export {};

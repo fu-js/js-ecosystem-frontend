@@ -38,12 +38,12 @@ watch(mouseX, (newX) => {
   const targetScale =
     scale.value + (dockIcon.scaleRatio - currentScale) * currentScale;
 
-  // animate(elRef.value, {
-  //   scale: targetScale,
-  //   width: `${targetSize}px`,
-  //   height: `${targetSize}px`,
-  //   duration: dockIcon.duration,
-  //   easing: "easeOutElastic(1, .6)",
-  // });
+  animate(elRef.value, {
+    scale: targetScale,
+    width: `${targetSize}px`,
+    height: `${targetSize}px`,
+    duration: dockIcon.duration,
+    easing: "easeOutElastic(1, .6)",
+  });
 });
 </script>
