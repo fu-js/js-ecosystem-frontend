@@ -1,19 +1,18 @@
 import tailwindcss from "@tailwindcss/vite";
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
-  runtimeConfig: {
-    app: {
-      googleClientId: process.env.GOOGLE_CLIENT_ID,
-    },
+  imports: {
+    scan: false,
   },
 
-  vite: {
-    plugins: [tailwindcss()],
+  runtimeConfig: {
+    apiUrl: process.env.API_URL,
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
   },
+
   css: ["~/assets/css/main.css"],
   ui: {
     theme: {
@@ -32,6 +31,10 @@ export default defineNuxtConfig({
         "bvh",
       ],
     },
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 
   modules: ["@nuxt/ui", "@nuxt/image", "@nuxt/eslint", "@nuxt/scripts"],
