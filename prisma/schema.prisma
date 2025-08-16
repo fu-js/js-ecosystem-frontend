@@ -17,22 +17,22 @@ model Member {
   dob        DateTime
   gender     Gender
   majorId    String?
+  major      Major?     @relation(fields: [majorId], references: [id], onDelete: SetNull)
   email      String     @unique @db.VarChar(255)
   socialLink String?    @map("social_link") @db.VarChar(255)
+  cohort     String?    @db.VarChar(50)
   status     Status
+  users      User?
   createdAt  DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt  DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
-  cohort     String?    @db.VarChar(50)
-  major      Major?     @relation(fields: [majorId], references: [id])
-  users      User?
 
   @@map("tbl_members")
 }
 
 model Major {
   id        String   @id @default(uuid())
-  majorCode String?  @map("major_code") @db.VarChar(50)
   majorName String?  @map("major_name") @db.VarChar(50)
+  majorCode String?  @map("major_code") @db.VarChar(50)
   members   Member[]
 
   @@map("tbl_majors")
@@ -41,11 +41,11 @@ model Major {
 model User {
   id        String     @id @default(uuid())
   memberId  String     @unique
+  member    Member?    @relation(fields: [memberId], references: [id])
   googleId  String     @unique @map("google_id")
   createdAt DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
   users     UserRole[]
-  member    Member     @relation(fields: [memberId], references: [id])
 
   @@map("tbl_users")
 }
@@ -56,19 +56,19 @@ model Role {
   description    String?          @db.VarChar(255)
   createdAt      DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt      DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
-  rolePermission RolePermission[]
   role           UserRole[]
+  rolePermission RolePermission[]
 
   @@map("tbl_role")
 }
 
 model UserRole {
   userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
   roleId    String   @map("role_id")
+  role      Role     @relation(fields: [roleId], references: [id])
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
-  role      Role     @relation(fields: [roleId], references: [id])
-  user      User     @relation(fields: [userId], references: [id])
 
   @@id([userId, roleId])
   @@map("tbl_user_has_role")
@@ -76,23 +76,23 @@ model UserRole {
 
 model Permission {
   id          String           @id @default(uuid())
-  path        String           @unique @db.VarChar(255)
+  action      String           @unique @db.VarChar(255)
   category    String           @db.VarChar(255)
   description String?          @db.VarChar(255)
+  permission  RolePermission[]
   createdAt   DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt   DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
-  permission  RolePermission[]
 
   @@map("tbl_permission")
 }
 
 model RolePermission {
   permissionId String     @map("permission_id")
+  permission   Permission @relation(fields: [permissionId], references: [id])
   roleId       String     @map("role_id")
+  role         Role       @relation(fields: [roleId], references: [id])
   createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt    DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
-  permission   Permission @relation(fields: [permissionId], references: [id])
-  role         Role       @relation(fields: [roleId], references: [id])
 
   @@id([roleId, permissionId])
   @@map("tbl_role_has_permission")

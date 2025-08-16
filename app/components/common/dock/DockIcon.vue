@@ -17,6 +17,7 @@ defineOptions({
 });
 
 import { animate } from "animejs";
+import cn from "~/utils/cn";
 
 const dockIcon = useAppConfig().dock.icon;
 const scale = ref(1);

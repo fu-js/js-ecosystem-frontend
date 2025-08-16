@@ -1,8 +1,9 @@
+<script setup lang="ts">
+import BlurryBackground from "~/components/common/background/BlurryBackground.vue";
+</script>
+
 <template>
-  <div class="h-screen overflow-hidden">
-    <UButton to="/admin/members" target="_blank" variant="link">
-      /admin/members
-    </UButton>
-    <UButton to="/login" target="_blank" variant="link"> /login </UButton>
+  <div class="h-full overflow-hidden">
+    <BlurryBackground />
   </div>
 </template>

@@ -1,132 +1,15 @@
+<script setup lang="ts">
+import AdminSidebar from "~/components/layout/AdminSidebar.vue";
+</script>
+
 <template>
   <div class="h-screen flex gap-2 p-2 overflow-clip">
     <div class="p-2 w-64 border overflow-auto">
-      <UNavigationMenu
-        class="data-[orientation=vertical]:w-full"
-        orientation="vertical"
-        :items="items"
-      />
+      <AdminSidebar />
     </div>
+
     <div class="w-full p-2 border overflow-hidden">
       <slot />
     </div>
-    <BottomDock />
   </div>
 </template>
-
-<script setup lang="ts">
-import type { NavigationMenuItem } from "@nuxt/ui";
-
-const items = ref<NavigationMenuItem[][]>([
-  [
-    {
-      label: "Guide",
-      icon: "i-lucide-book-open",
-      children: [
-        {
-          label: "Introduction",
-          description: "Fully styled and customizable components for Nuxt.",
-          icon: "i-lucide-house",
-        },
-        {
-          label: "Installation",
-          description:
-            "Learn how to install and configure Nuxt UI in your application.",
-          icon: "i-lucide-cloud-download",
-        },
-        {
-          label: "Icons",
-          icon: "i-lucide-smile",
-          description:
-            "You have nothing to do, @nuxt/icon will handle it automatically.",
-        },
-        {
-          label: "Colors",
-          icon: "i-lucide-swatch-book",
-          description:
-            "Choose a primary and a neutral color from your Tailwind CSS theme.",
-        },
-        {
-          label: "Theme",
-          icon: "i-lucide-cog",
-          description:
-            "You can customize components by using the `class` / `ui` props or in your app.config.ts.",
-        },
-      ],
-    },
-    {
-      label: "Composables",
-      icon: "i-lucide-database",
-      children: [
-        {
-          label: "defineShortcuts",
-          icon: "i-lucide-file-text",
-          description: "Define shortcuts for your application.",
-        },
-        {
-          label: "useOverlay",
-          icon: "i-lucide-file-text",
-          description: "Display a modal/slideover within your application.",
-        },
-        {
-          label: "useToast",
-          icon: "i-lucide-file-text",
-          description: "Display a toast within your application.",
-        },
-      ],
-    },
-    {
-      label: "Components",
-      icon: "i-lucide-box",
-      active: true,
-      defaultOpen: true,
-      children: [
-        {
-          label: "Link",
-          icon: "i-lucide-file-text",
-          description: "Use NuxtLink with superpowers.",
-        },
-        {
-          label: "Modal",
-          icon: "i-lucide-file-text",
-          description: "Display a modal within your application.",
-        },
-        {
-          label: "NavigationMenu",
-          icon: "i-lucide-file-text",
-          description: "Display a list of links.",
-        },
-        {
-          label: "Pagination",
-          icon: "i-lucide-file-text",
-          description: "Display a list of pages.",
-        },
-        {
-          label: "Popover",
-          icon: "i-lucide-file-text",
-          description:
-            "Display a non-modal dialog that floats around a trigger element.",
-        },
-        {
-          label: "Progress",
-          icon: "i-lucide-file-text",
-          description: "Show a horizontal bar to indicate task progression.",
-        },
-      ],
-    },
-  ],
-  [
-    {
-      label: "GitHub",
-      icon: "i-simple-icons-github",
-      badge: "3.8k",
-      target: "_blank",
-    },
-    {
-      label: "Help",
-      icon: "i-lucide-circle-help",
-      disabled: true,
-    },
-  ],
-]);
-</script>

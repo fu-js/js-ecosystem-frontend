@@ -9,15 +9,15 @@
   />
 </template>
 
-<script setup lang="ts">
+<script setup lang="tsx">
 import type { TableColumn } from "@nuxt/ui";
 import { Department, Status, type Member } from "@prisma/client";
 import { h, resolveComponent } from "vue";
-import { departmentMap } from "~/utils/department";
+import departmentNames from "~/utils/departmentNames";
+import MemberCell from "./MemberCell.vue";
 
 const UBadge = resolveComponent("UBadge");
 const UButton = resolveComponent("UButton");
-const MemberCell = resolveComponent("MemberCell");
 const MemberDropdownMenu = resolveComponent("MemberDropdownMenu");
 
 type PartialMember = Pick<
@@ -45,14 +45,11 @@ const columns: TableColumn<PartialMember>[] = [
     accessorKey: "name",
     header: () => createHeader("Name"),
     cell: ({ row }) => {
-      return h(
-        MemberCell,
-        {
-          class: "font-semibold",
-          name: row.getValue("name"),
-          id: row.getValue("rollNumber"),
-        },
-        () => row.getValue("name")
+      return (
+        <MemberCell
+          name={row.getValue("name")}
+          id={row.getValue("rollNumber")}
+        />
       );
     },
   },
@@ -86,7 +83,7 @@ const columns: TableColumn<PartialMember>[] = [
         h(
           UBadge,
           { class: "", variant: "solid", icon, color },
-          () => departmentMap[row.getValue("department") as Department]
+          () => departmentNames[row.getValue("department") as Department]
         )
       );
     },

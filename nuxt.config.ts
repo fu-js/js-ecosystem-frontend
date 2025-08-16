@@ -4,13 +4,11 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
-  imports: {
-    scan: false,
-  },
-
   runtimeConfig: {
-    apiUrl: process.env.API_URL,
-    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    public: {
+      apiUrl: process.env.API_URL,
+      googleClientId: process.env.GOOGLE_CLIENT_ID,
+    },
   },
 
   css: ["~/assets/css/main.css"],

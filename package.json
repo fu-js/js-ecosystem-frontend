@@ -3,15 +3,16 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
     "dev": "nuxt dev",
+    "prepare": "nuxt prepare",
     "generate": "nuxt generate",
+    "build": "nuxt build",
     "preview": "nuxt preview",
-    "prepare": "nuxt prepare"
+    "db": "prisma generate",
+    "format": "prettier . -w"
   },
   "dependencies": {
     "@faker-js/faker": "^9.9.0",
-    "@hypernym/nuxt-anime": "^2.1.1",
     "@nuxt/eslint": "1.8.0",
     "@nuxt/image": "1.11.0",
     "@nuxt/scripts": "0.11.10",
@@ -27,6 +28,7 @@
     "clsx": "^2.1.1",
     "eslint": "^9.0.0",
     "nuxt": "^4.0.3",
+    "ogl": "^1.0.11",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.6.3",
     "vue": "^3.5.18",
@@ -34,6 +36,9 @@
   },
   "devDependencies": {
     "@types/animejs": "^3.1.13",
-    "prisma": "^6.13.0"
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.2.0",
+    "prisma": "^6.13.0",
+    "vue-tsc": "^3.0.5"
   }
 }

@@ -32,9 +32,7 @@
       <USeparator orientation="vertical" :class="dock.separator.h" />
 
       <DockIcon>
-        <UIDebugButton
-          :class="cn('', iconClasses)"
-        />
+        <UIDebugButton :class="cn('', iconClasses)" />
       </DockIcon>
       <DockIcon>
         <UButton
@@ -49,6 +47,10 @@
 </template>
 
 <script setup lang="ts">
+import Dock from "~/components/common/dock/Dock.vue";
+import DockIcon from "~/components/common/dock/DockIcon.vue";
+import cn from "~/utils/cn";
+
 const iconClasses = "rounded-full";
 const dock = useAppConfig().dock;
 </script>

@@ -2,8 +2,8 @@
   <ClientOnly v-if="!colorMode?.forced">
     <UButton
       color="neutral"
-      :variant="props.variant"
-      :class="props.class"
+      :variant="variant"
+      :class="class"
       :icon="isDark ? 'i-lucide-moon-star' : 'i-lucide-sun'"
       @click="isDark = !isDark"
     />
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   class?: string;
   variant?:
     | "solid"

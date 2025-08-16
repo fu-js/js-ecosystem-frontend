@@ -20,7 +20,7 @@ export default async (response: CredenticalResponse) => {
         "Content-Type": "application/json",
       },
       body: { token: response.credential },
-    }
+    },
   );
 
   console.log("Data from backend:", data);

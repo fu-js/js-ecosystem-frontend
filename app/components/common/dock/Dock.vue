@@ -4,11 +4,13 @@
     @mouseleave="handleMouseLeave"
     :class="classes"
   >
-    <slot :icon-size="180" />
+    <slot />
   </div>
 </template>
 
 <script setup lang="ts">
+import cn from "~/utils/cn";
+
 const props = withDefaults(
   defineProps<{
     class?: string;
@@ -19,7 +21,7 @@ const props = withDefaults(
   }>(),
   {
     direction: "middle",
-  }
+  },
 );
 
 const mouseX = ref(Infinity);
@@ -40,6 +42,6 @@ const classes = cn(
     "items-center": props.direction === "middle",
     "items-end": props.direction === "bottom",
   },
-  props.class
+  props.class,
 );
 </script>
