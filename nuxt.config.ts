@@ -2,7 +2,13 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true,
+    },
+  },
 
   runtimeConfig: {
     public: {
@@ -15,13 +21,13 @@ export default defineNuxtConfig({
   ui: {
     theme: {
       colors: [
-        "debug",
         "primary",
         "secondary",
         "info",
         "success",
         "warning",
         "error",
+        "neutral",
         "bcm",
         "bdn",
         "bnd",
@@ -35,5 +41,11 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["@nuxt/ui", "@nuxt/image", "@nuxt/eslint", "@nuxt/scripts"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxt/image",
+    "@nuxt/eslint",
+    "@nuxt/scripts",
+    "@pinia/nuxt",
+  ],
 });

@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import BlurryBackground from "~/components/common/background/BlurryBackground.vue";
+import HomePageWelcome from "~/components/layout/HomePageWelcome.vue";
+
+const { data: jwtDecodedPayload } = await useFetch<JwtDecodedPayload>(
+  "/api/jwt-decoded-payload",
+);
+
+const jwtDecodedPayloadStore = useJwtDecodedPayloadStore();
+jwtDecodedPayloadStore.setData(jwtDecodedPayload.value ?? null);
 </script>
 
 <template>
-  <div class="h-full overflow-hidden">
-    <BlurryBackground />
-  </div>
+  <NuxtLayout name="home">
+    <HomePageWelcome />
+  </NuxtLayout>
 </template>

@@ -3,12 +3,12 @@ import AdminSidebar from "~/components/layout/AdminSidebar.vue";
 </script>
 
 <template>
-  <div class="h-screen flex gap-2 p-2 overflow-clip">
-    <div class="p-2 w-64 border overflow-auto">
+  <div class="flex h-screen gap-2 overflow-clip p-2">
+    <div class="w-64 overflow-auto border p-2">
       <AdminSidebar />
     </div>
 
-    <div class="w-full p-2 border overflow-hidden">
+    <div class="w-full overflow-hidden border p-2">
       <slot />
     </div>
   </div>

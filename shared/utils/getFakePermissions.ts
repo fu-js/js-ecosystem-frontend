@@ -1,5 +1,5 @@
-import { faker } from "@faker-js/faker";
 import { type Permission } from "@prisma/client";
+import { faker } from "@faker-js/faker";
 
 const getFakePermission = (): Permission => {
   return {

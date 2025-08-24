@@ -1,5 +1,5 @@
-import { faker } from "@faker-js/faker";
 import { Department, Gender, Status, type Member } from "@prisma/client";
+import { faker } from "@faker-js/faker";
 
 const getFakeMember = (): Member => {
   return {

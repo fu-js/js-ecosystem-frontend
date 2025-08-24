@@ -1,27 +1,24 @@
-type CredenticalResponse = {
-  credential: string;
-};
+export default async (response: CredentialResponse) => {
+  console.log("Credential response:", response);
 
-type ResponseFromBackend = {
-  message: string;
-  token: string;
-};
+  const cfg = useRuntimeConfig();
+  const signinApiEndpoint = cfg.public.apiUrl + "/api/v1/auth/signin";
 
-export default async (response: CredenticalResponse) => {
-  console.log("Credentical response:", response);
+  console.log("API Endpoint:", signinApiEndpoint);
 
-  const { apiUrl } = useRuntimeConfig();
-
-  const { data } = await useFetch<ResponseFromBackend>(
-    apiUrl + "/api/v1/auth/login",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: { token: response.credential },
+  const { data } = await useFetch<SignInResponse>(signinApiEndpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-  );
+    body: { token: response.credential },
+  });
 
-  console.log("Data from backend:", data);
+  console.log("Data from backend:", data.value);
+
+  const cookie = useCookie("access-token");
+  cookie.value = data.value?.token;
+  console.log('"access-token" cookie set successfully.');
+
+  await navigateTo("/");
 };

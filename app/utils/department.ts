@@ -1,6 +1,6 @@
 import { Department } from "@prisma/client";
 
-export default {
+export const departmentNames = {
   [Department.BanChuyenMon]: "Ban Chuyên Môn",
   [Department.BanDoiNgoai]: "Ban Đối Ngoại",
   [Department.BanNoiDung]: "Ban Nội Dung",
