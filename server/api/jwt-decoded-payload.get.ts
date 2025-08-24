@@ -1,9 +1,13 @@
 import verifyJwt from "../utils/verifyJwt";
 
 export default defineEventHandler(
-  async (event): Promise<JwtDecodedPayload | null> => {
-    const cookie = getCookie(event, "access-token");
-    const payload = !!cookie ? verifyJwt(cookie) : null;
-    return payload;
+  async (event): Promise<JwtDecodedPayload | string> => {
+    const accessToken = getCookie(event, "access-token");
+    if (!accessToken) {
+      return "Access token not found";
+    }
+
+    const payload = verifyJwt(accessToken);
+    return payload ?? "Decode failed";
   },
 );
