@@ -2,7 +2,7 @@ export default async (response: CredentialResponse) => {
   console.log("Credential response:", response);
 
   const cfg = useRuntimeConfig();
-  const signinApiEndpoint = cfg.public.apiUrl + "/api/v1/auth/signin";
+  const signinApiEndpoint = cfg.public.apiUrl + "/api/v1/auth/login";
 
   console.log("API Endpoint:", signinApiEndpoint);
 
