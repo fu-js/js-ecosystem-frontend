@@ -1,7 +1,16 @@
+<script setup lang="ts">
+import HomePageWelcome from "~/components/layout/HomePageWelcome.vue";
+
+const { data: jwtDecodedPayload } = await useFetch<JwtDecodedPayload>(
+  "/api/jwt-decoded-payload",
+);
+
+const jwtDecodedPayloadStore = useJwtDecodedPayloadStore();
+jwtDecodedPayloadStore.setData(jwtDecodedPayload.value ?? null);
+</script>
+
 <template>
-  <div class="h-screen overflow-hidden">
-    <UButton to="/admin/members" target="_blank" variant="link">
-      admin/members
-    </UButton>
-  </div>
+  <NuxtLayout name="home">
+    <HomePageWelcome />
+  </NuxtLayout>
 </template>

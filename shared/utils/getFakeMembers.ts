@@ -1,7 +1,7 @@
 import { Department, Gender, Status, type Member } from "@prisma/client";
 import { faker } from "@faker-js/faker";
 
-export const getFakeMember = (): Member => {
+const getFakeMember = (): Member => {
   return {
     id: faker.string.uuid(),
     name: faker.person.fullName(),
@@ -32,6 +32,6 @@ export const getFakeMember = (): Member => {
   };
 };
 
-export const getFakeMembers = (length: number): Member[] => {
+export default (length: number): Member[] => {
   return Array.from({ length: length }, () => getFakeMember());
 };
